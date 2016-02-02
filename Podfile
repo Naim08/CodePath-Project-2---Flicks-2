@@ -11,5 +11,4 @@ target 'Flicks' do
 pod 'AFNetworking', '~> 3.0'
 pod 'MBProgressHUD'
 pod 'PKHUD'
-pod 'ReachabilitySwift'
 end

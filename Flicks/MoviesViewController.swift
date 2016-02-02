@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 import PKHUD
-import ReachabilitySwift
+
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
@@ -33,6 +33,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         searchBar.delegate = self
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
         refreshControlAction(refreshControl)
+       
         
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
@@ -45,8 +46,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+   
     
     
+    @IBAction func refreshNetwork(sender: UITapGestureRecognizer) {
+        refreshControlAction(refreshControl)
+    }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let filteredMovies = filteredMovies {
@@ -118,7 +123,39 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     public func refreshControlAction(refreshControl: UIRefreshControl) {
        PKHUD.sharedHUD.show()
+        let reachability: Reachability
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+        } catch {
+            print("Unable to create Reachability")
+            return
+        }
+        reachability.whenReachable = { reachability in
+            // this is called on a background thread, but UI updates must
+            // be on the main thread, like this:
+            self.networkLabel.hidden = true
+            dispatch_async(dispatch_get_main_queue()) {
+                if reachability.isReachableViaWiFi() {
+                    print("Reachable via WiFi")
+                } else {
+                    print("Reachable via Cellular")
+                }
+            }
+        }
+        reachability.whenUnreachable = { reachability in
+            // this is called on a background thread, but UI updates must
+            // be on the main thread, like this:
+            self.networkLabel.hidden = false
+            dispatch_async(dispatch_get_main_queue()) {
+                print("Not reachable")
+            }
+        }
         
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
@@ -139,11 +176,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                             //reloading data
                             self.refreshControl.endRefreshing()
                             self.tableView.reloadData()
-                            self.networkLabel.hidden = true
                     }
-                } else {
-                    self.networkLabel.hidden = false
-                    PKHUD.sharedHUD.hide()
                 }
                 
                 self.tableView.reloadData()
@@ -156,6 +189,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         task.resume()
     }
     
+
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             filteredMovies = movies
@@ -176,6 +210,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
+    @IBAction func closeKeyboard(sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

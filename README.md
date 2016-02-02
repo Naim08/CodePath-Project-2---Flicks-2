@@ -19,7 +19,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [X ] List anything else that you can get done to improve the app functionality!
+- [X] List anything else that you can get done to improve the app functionality!
 - [X] Customize the UI. You can use Iconmonstr and The Noun Project as good sources of images.
 - [X] All images fade in as they are loading.
 
