@@ -60,6 +60,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let imageUrl = NSURL(string: baseURl + posterPath)
         let placeholder = UIImage(named: "placeholder.png")
         
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.blueColor()
+        cell.selectedBackgroundView = backgroundView
+        
         cell.posterView.setImageWithURL(imageUrl!, placeholderImage: placeholder)
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
@@ -69,9 +73,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     public func refreshControlAction(refreshControl: UIRefreshControl) {
+        let spinningActivity = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
             configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
@@ -100,6 +105,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 // Tell the refreshControl to stop spinning
                 refreshControl.endRefreshing()
+                spinningActivity.hide(true)
+
         });
         task.resume()
     }
