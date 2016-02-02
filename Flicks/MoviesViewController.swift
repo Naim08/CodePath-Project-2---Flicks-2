@@ -91,14 +91,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.posterView.setImageWithURL(imageUrl!, placeholderImage: placeholder)
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
+        cell.accessoryType = .None
         print(indexPath.row)
         
         return cell
-    }
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        print("success")
     }
     
     public func refreshControlAction(refreshControl: UIRefreshControl) {
