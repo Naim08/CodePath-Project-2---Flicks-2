@@ -14,12 +14,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PKHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Flicks.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SVProgressHUD.xcscheme</key>
+		<key>ReachabilitySwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>50A9DEF696DE954E692F53B420C3AEA3</key>
+		<key>0C66C30381F86C3D642FC983CCADEBB6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>76BA4EA80AF66C2E4C503053E705998A</key>
+		<key>5A9DB5B956E1DE35227F5BF059F4B95C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A064B75A9838606659BB57FE5AC8A101</key>
+		<key>6EC1E914CD6258613E5E90C3FB2094A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DFCF2AC9ABF3BC21E76D0A6D7431C929</key>
+		<key>9630FCA4205605AD27AFFB2DF8126387</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D11DBC5701DF1040A6209219DF1A9706</key>
 		<dict>
 			<key>primary</key>
 			<true/>

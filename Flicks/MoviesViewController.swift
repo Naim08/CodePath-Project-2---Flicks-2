@@ -9,6 +9,8 @@
 import UIKit
 import AFNetworking
 import MBProgressHUD
+import PKHUD
+import ReachabilitySwift
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
@@ -19,6 +21,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var networkLabel: UILabel!
+    
+    
     var movies: [NSDictionary]?
     var filteredMovies: [NSDictionary]?
     var endpoint: String!
@@ -27,6 +31,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
         refreshControlAction(refreshControl)
         
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
@@ -112,7 +117,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     public func refreshControlAction(refreshControl: UIRefreshControl) {
-        let spinningActivity = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+       PKHUD.sharedHUD.show()
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
@@ -138,13 +143,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     }
                 } else {
                     self.networkLabel.hidden = false
+                    PKHUD.sharedHUD.hide()
                 }
                 
                 self.tableView.reloadData()
                 
                 // Tell the refreshControl to stop spinning
                 refreshControl.endRefreshing()
-                spinningActivity.hide(true)
+                PKHUD.sharedHUD.hide()
 
         });
         task.resume()
