@@ -11,4 +11,5 @@ target 'Flicks' do
 pod 'AFNetworking', '~> 3.0'
 pod 'MBProgressHUD'
 pod 'PKHUD'
+pod 'PullToMakeFlight', '~> 1.0'
 end

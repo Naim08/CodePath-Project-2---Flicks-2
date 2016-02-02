@@ -24,25 +24,45 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PullToMakeFlight.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PullToRefresher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1251AC111ACEE035A50DE5C712AB8704</key>
+		<key>0316E8DF3A016BDD5DCCC003589F1E7A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7F073CC5D3CD0F5EDAA245C11E7826AF</key>
+		<key>55EBEA56AA4D3FF91CCFF58C1124A56E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8E75D138DABFBAD64ACAE05C976AC5F0</key>
+		<key>7161FDFA62D8BB5D8BC450F0BBA56D99</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC129B2E421098A10C335020D4A8A239</key>
+		<key>7407E7DD4C4AE7ACEB4ACBCA73E8045A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D23CC028AA6F9158E2CE4EAEEE368703</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F78A612ECD665CBA5D8BCF0AF6BA804B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

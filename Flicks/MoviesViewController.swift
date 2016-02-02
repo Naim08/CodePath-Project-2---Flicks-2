@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 import PKHUD
-
+import PullToMakeFlight
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
@@ -25,6 +25,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     var movies: [NSDictionary]?
     var filteredMovies: [NSDictionary]?
     var endpoint: String!
+    let refresher = PullToMakeFlight()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -33,6 +35,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         self.navigationController?.navigationBar.backgroundColor = UIColor.cellColorSelect()
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
         refreshControlAction(refreshControl)
+        
+        tableView.addPullToRefresh(PullToMakeFlight(), action: { () -> () in
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+                Int64(5 * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue(), {[unowned self] in
+                self.tableView.endRefreshing()
+                })
+        })
         
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
@@ -174,6 +184,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                             self.filteredMovies = self.movies
                             //reloading data
                             self.refreshControl.endRefreshing()
+                            self.tableView.endRefreshing()
                             self.tableView.reloadData()
                     }
                 }
@@ -182,6 +193,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 // Tell the refreshControl to stop spinning
                 refreshControl.endRefreshing()
+                self.tableView.endRefreshing()
                 PKHUD.sharedHUD.hide()
 
         });
