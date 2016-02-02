@@ -22,6 +22,8 @@ The following **additional** features are implemented:
 - [X] List anything else that you can get done to improve the app functionality!
 - [X] Customize the UI. You can use Iconmonstr and The Noun Project as good sources of images.
 - [X] All images fade in as they are loading.
+- [X] User sees a loading state while waiting for the movies API (you can use any 3rd party library available to do this).
+- [X] User can pull to refresh the movie list.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
