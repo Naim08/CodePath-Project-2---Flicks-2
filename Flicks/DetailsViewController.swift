@@ -10,7 +10,9 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
+    @IBOutlet weak var infoView: UIView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var posterImageView: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,11 +23,14 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.height)
+        
         let title = movie["title"] as? String
         titleLabel.text = title
         
         let overView = movie["overview"] as? String
         overviewLabel.text = overView
+        overviewLabel.sizeToFit()
         
         let baseURl = "https://image.tmdb.org/t/p/w342"
         let posterPath = movie["poster_path"] as! String
