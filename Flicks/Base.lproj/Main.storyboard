@@ -94,11 +94,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="KiE-P2-Z2f">
-                                        <rect key="frame" x="0.0" y="-5" width="320" height="507"/>
+                                        <rect key="frame" x="0.0" y="-65" width="320" height="567"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <view alpha="0.65000000000000002" contentMode="scaleToFill" id="HXf-gj-Xs5">
-                                        <rect key="frame" x="0.0" y="275" width="320" height="211"/>
+                                        <rect key="frame" x="0.0" y="291" width="320" height="211"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xnd-fK-ucR">
