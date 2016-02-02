@@ -92,7 +92,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         cell.accessoryType = .None
-        print(indexPath.row)
         
         return cell
     }
@@ -152,14 +151,21 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.reloadData()
     }
     
-    /*
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(cell)
+        let movie = movies![indexPath!.row]
+        
+        let detailViewController = segue.destinationViewController as! DetailsViewController
+        detailViewController.movie = movie
+        print("prepare")
     // Get the new view controller using segue.destinationViewController.
     // Pass the selected object to the new view controller.
     }
-    */
+    
     
 }
