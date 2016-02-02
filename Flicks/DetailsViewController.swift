@@ -22,9 +22,9 @@ class DetailsViewController: UIViewController {
     var movie: NSDictionary!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.height)
         
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.height)
+        self.navigationController?.navigationBar.backgroundColor = UIColor.cellColorSelect()
         let title = movie["title"] as? String
         titleLabel.text = title
         

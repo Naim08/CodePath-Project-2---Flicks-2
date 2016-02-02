@@ -59,41 +59,40 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hKU-fx-Xfb">
-                                <rect key="frame" x="0.0" y="65" width="320" height="41"/>
+                            <view contentMode="scaleToFill" id="uF4-h0-Coe">
+                                <rect key="frame" x="0.0" y="62" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="0.87" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5F7-DT-RKn">
+                                        <rect key="frame" x="99" y="11" width="107" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.70999999999999996" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.14901961386203766" green="0.074509806931018829" blue="0.27843138575553894" alpha="1" colorSpace="deviceRGB"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="highlightedColor" red="0.19215688109397888" green="0.18823531270027161" blue="0.058823533356189728" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Hre-xi-2nf" appends="YES" id="WHQ-4X-IMh"/>
+                                    <outletCollection property="gestureRecognizers" destination="bgx-Bi-mls" appends="YES" id="pFW-Nf-Uyt"/>
                                 </connections>
-                            </label>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="bbG-mz-KWW" appends="YES" id="3O1-8i-YL1"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="q9Z-Zl-w9v"/>
                     <connections>
-                        <outlet property="networkLabel" destination="hKU-fx-Xfb" id="h8c-jb-vAn"/>
+                        <outlet property="networkLabel" destination="uF4-h0-Coe" id="TwY-4w-7wk"/>
                         <outlet property="searchBar" destination="BSf-NC-dW2" id="cvA-kZ-JeP"/>
                         <outlet property="tableView" destination="KR6-vm-QQF" id="1yZ-GT-GfF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Hre-xi-2nf">
+                <tapGestureRecognizer id="bgx-Bi-mls">
                     <connections>
-                        <action selector="refreshNetwork:" destination="BYZ-38-t0r" id="NhF-oK-rab"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="bbG-mz-KWW">
-                    <connections>
-                        <action selector="closeKeyboard:" destination="BYZ-38-t0r" id="9s2-j0-Jt5"/>
+                        <action selector="reloadNetwork:" destination="BYZ-38-t0r" id="cIA-x4-hWB"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -153,21 +152,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hH7-S7-ylI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2730" y="265"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ptE-11-L8p">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TDB-Na-wbm" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HAR-id-CxE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M7v-Vk-uZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1157" y="265"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u0D-B8-xgg">

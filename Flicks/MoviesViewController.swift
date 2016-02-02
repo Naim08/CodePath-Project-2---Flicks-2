@@ -20,9 +20,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
    @IBOutlet weak var tableView: UITableView!
     let refreshControl = UIRefreshControl()
     
-    @IBOutlet weak var networkLabel: UILabel!
     
-    
+    @IBOutlet weak var networkLabel: UIView!
     var movies: [NSDictionary]?
     var filteredMovies: [NSDictionary]?
     var endpoint: String!
@@ -31,9 +30,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
+        self.navigationController?.navigationBar.backgroundColor = UIColor.cellColorSelect()
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
         refreshControlAction(refreshControl)
-       
         
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
@@ -47,11 +46,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
    
-    
-    
-    @IBAction func refreshNetwork(sender: UITapGestureRecognizer) {
-        refreshControlAction(refreshControl)
-    }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let filteredMovies = filteredMovies {
@@ -117,10 +111,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         cell.accessoryType = .None
-        
         return cell
     }
-    
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        view.endEditing(true)
+    }
     public func refreshControlAction(refreshControl: UIRefreshControl) {
        PKHUD.sharedHUD.show()
         let reachability: Reachability
@@ -134,6 +131,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             // this is called on a background thread, but UI updates must
             // be on the main thread, like this:
             self.networkLabel.hidden = true
+            self.searchBar.hidden = false
             dispatch_async(dispatch_get_main_queue()) {
                 if reachability.isReachableViaWiFi() {
                     print("Reachable via WiFi")
@@ -146,6 +144,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             // this is called on a background thread, but UI updates must
             // be on the main thread, like this:
             self.networkLabel.hidden = false
+            self.searchBar.hidden = true
             dispatch_async(dispatch_get_main_queue()) {
                 print("Not reachable")
             }
@@ -210,8 +209,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
-    @IBAction func closeKeyboard(sender: UITapGestureRecognizer) {
-        view.endEditing(true)
+    
+    @IBAction func reloadNetwork(sender: UITapGestureRecognizer) {
+        refreshControlAction(refreshControl)
     }
     // MARK: - Navigation
     
@@ -227,6 +227,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     // Get the new view controller using segue.destinationViewController.
     // Pass the selected object to the new view controller.
     }
+
     
     
 }
