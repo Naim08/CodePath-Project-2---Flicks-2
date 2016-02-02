@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nowPlayingViewController = nowPlayingNavigationController.topViewController as! MoviesViewController
         nowPlayingViewController.endpoint = "now_playing"
         nowPlayingNavigationController.tabBarItem.title = "Now Playing"
+        nowPlayingViewController.title = "Now Playing"
       
         nowPlayingNavigationController.navigationBar.tintColor = UIColor.darkGrayColor()
         nowPlayingNavigationController.tabBarItem.image = UIImage(named: "now_playing")
@@ -33,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         topRatedViewController.endpoint = "top_rated"
         topRatedNavigationController.tabBarItem.title = "Top Rated"
         topRatedNavigationController.tabBarItem.image = UIImage(named: "top_rated")
+        topRatedViewController.title = "Top Rated"
       
         topRatedNavigationController.navigationBar.tintColor = UIColor.darkGrayColor()
         
