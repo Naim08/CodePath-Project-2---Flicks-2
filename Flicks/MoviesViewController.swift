@@ -57,7 +57,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let overview = movie["overview"] as! String
         
        
-        let baseURl = "https://image.tmdb.org/t/p/w342"
+        let baseURl = "https://image.tmdb.org/t/p/w45"
         let largeUrl = "https://image.tmdb.org/t/p/original"
         
         let posterPath = movie["poster_path"] as! String
@@ -66,7 +66,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let placeholder = UIImage(named: "placeholder.png")
         
         let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.blueColor()
+        backgroundView.backgroundColor = UIColor.cellColorSelect()
         cell.selectedBackgroundView = backgroundView
         
         cell.posterView.setImageWithURLRequest( smallImageRequest,

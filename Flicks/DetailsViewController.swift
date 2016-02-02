@@ -32,7 +32,7 @@ class DetailsViewController: UIViewController {
         overviewLabel.text = overView
         overviewLabel.sizeToFit()
         
-        let baseURl = "https://image.tmdb.org/t/p/w342"
+        let baseURl = "https://image.tmdb.org/t/p/w45"
         let largeUrl = "https://image.tmdb.org/t/p/original"
         
         let posterPath = movie["poster_path"] as! String
