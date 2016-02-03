@@ -25,6 +25,7 @@ The following **additional** features are implemented:
 - [X] User sees a loading state while waiting for the movies API (you can use any 3rd party library available to do this).
 - [X] User can pull to refresh the movie list.
 - [X] Custom Refresher
+- [X] Scrolling down pulls up infoView.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
  
@@ -33,7 +34,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='flicks-2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='flicks-2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' /><img src='flicks-2-1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
