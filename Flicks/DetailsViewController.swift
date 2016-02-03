@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var infoView: UIView!
     
@@ -21,16 +21,23 @@ class DetailsViewController: UIViewController {
     
     var movie: NSDictionary!
     
+    
     override func viewDidLoad() {
-        
-        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.height)
-        self.navigationController?.navigationBar.backgroundColor = UIColor.cellColorSelect()
+        scrollView.delegate = self
         let title = movie["title"] as? String
         titleLabel.text = title
         
         let overView = movie["overview"] as? String
         overviewLabel.text = overView
         overviewLabel.sizeToFit()
+        
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y)
+
+        print(infoView.frame.origin.y)
+        print(self.scrollView.contentSize.width)
+        
+        self.navigationController?.navigationBar.backgroundColor = UIColor.cellColorSelect()
+      
         
         let baseURl = "https://image.tmdb.org/t/p/w45"
         let largeUrl = "https://image.tmdb.org/t/p/original"
@@ -84,8 +91,17 @@ class DetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
+    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if targetContentOffset.memory.y < scrollView.contentOffset.y {
+            print("Going up!")
+            self.infoView.frame.origin.y = self.scrollView.contentSize.height - self.infoView.frame.size.height
+            
+        } else {
+            print("Going down!")
+            
+        }
+    }
+  
     /*
     // MARK: - Navigation
 
